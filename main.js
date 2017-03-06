@@ -5,6 +5,8 @@ var myApp = angular.module('myApp', [])
 
 resController.$inject = ['$timeout']
 
+
+
 function resController($timeout) {
     console.log("resController works!")
     var main = this;
@@ -13,6 +15,11 @@ function resController($timeout) {
     main.resumeList = JSON.parse(window.localStorage.getItem('resumelist')) || [];
     console.log(main.resumeList);
     window.main = main;
+
+    main.sortType     = 'title'; // set the default sort type
+    main.sortReverse  = false;  // set the default sort order
+    main.searchTitle   = '';     // set the default search/filter term
+
     main.addResume = function() {
 
         console.log(main.newResume.title);

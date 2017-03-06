@@ -49,31 +49,81 @@
       <br>
       <br>
       <br>
-<table class="table">
-   <tr>
-      <th>Title</th>
-      <th>Location</th>
-      <th>Company</th>
-      <th>Company URL</th>
-      <th>Contact Name</th>
-      <th>Contact Phone</th>
-      <th>Contact Email</th>
-      <th>Date Submitted</th>
-      <th>Notes</th>
-   </tr>
+        <table class="table table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <td>
+                    <a href="#" ng-click="sortType = 'title'">
+                    Title
+                    <span ng-show="sortType == 'title'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                     <a href="#" ng-click="sortType = 'location'">
+                    Location
+                    <span ng-show="sortType == 'location'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'company'">
+                    Company
+                    <span ng-show="sortType == 'company'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'url'">
+                    Company url
+                    <span ng-show="sortType == 'url'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'contactName'">
+                    Contact Name
+                    <span ng-show="sortType == 'contactName'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'contactPhone'">
+                    Contact Phone
+                    <span ng-show="sortType == 'contactPhone'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'contactEmail'">
+                    Contact Email
+                    <span ng-show="sortType == 'contactEmail'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'dateSubmitted'">
+                    Date Submitted
+                    <span ng-show="sortType == 'dateSubmitted'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'notes'">
+                    Notes
+                    <span ng-show="sortType == 'notes'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+            </tr>
+        </thead>
    
-   <tr ng-repeat="resume in main.resumeList">
-      <td>{{resume.title}}</td>
-      <td>{{resume.location}}</td>
-      <td>{{resume.company}}</td>
-      <td>{{resume.url}}</td>
-      <td>{{resume.contactName}}</td>
-      <td>{{resume.contactPhone}}</td>
-      <td>{{resume.contactEmail}}</td>
-      <td>{{resume.dateSubmitted}}</td>
-      <td>{{resume.notes}}</td>
-          
-   </tr>
+        <tbody>
+            <tr ng-repeat="resume in main.resumeList | orderBy:sortType:sortReverse">
+                <td>{{resume.title}}</td>
+                <td>{{resume.location}}</td>
+                <td>{{resume.company}}</td>
+                <td>{{resume.url}}</td>
+                <td>{{resume.contactName}}</td>
+                <td>{{resume.contactPhone}}</td>
+                <td>{{resume.contactEmail}}</td>
+                <td>{{resume.dateSubmitted}}</td>
+                <td>{{resume.notes}}</td>
+        
+             </tr>
+        </tbody>
 </table>
        
 </body>
