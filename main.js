@@ -32,6 +32,22 @@ function resController($timeout) {
         console.log(main.newResume.dateSubmitted);
         console.log(main.newResume.notes);
 
+        var subDate = new Date(main.newResume.dateSubmitted);
+
+        console.log("Date: " + subDate);
+
+        var resDay = subDate.getDate();
+        var resMonth = subDate.getMonth();
+        var resYear = subDate.getFullYear();
+
+        console.log("Month: " + (resMonth + 1) + ", Day: " + (resDay) + ", Year: " + resYear);
+
+        var newDate = ((resMonth + 1) + "/" + (resDay + 7) + "/" + resYear); 
+
+        console.log("New Date: " + newDate);
+
+        main.newResume.followUp = newDate;
+
         if (main.newResume.title && main.newResume.location) {
 
             main.resumeList.push(main.newResume);

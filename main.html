@@ -6,6 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-xeditable/0.4.0/js/xeditable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
     <script src="main.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
     <link rel="stylesheet" href="maincss.css">
@@ -36,7 +37,7 @@
                               Contact Email: <input class="form-control" ng-model="main.newResume.contactEmail" placeholder="Contact Email">
                               Date Submitted: <input class="form-control" ng-model="main.newResume.dateSubmitted" placeholder="Date Submitted">
                               Notes: <input class="form-control" ng-model="main.newResume.notes" placeholder="Notes">
-
+                              <!--Follow Up: <input type="hidden" class="form-control" ng-model="main.newResume.followUp" placeholder="Follow up Date">-->
                               <div class="modal-footer">    
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Save changes</button>
@@ -107,6 +108,12 @@
                     <span ng-show="sortType == 'notes'" class="fa fa-caret-down"></span>
                     </a>
                 </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'followUp'">
+                    Follow Up
+                    <span ng-show="sortType == 'followUp'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
             </tr>
         </thead>
    
@@ -121,6 +128,7 @@
                 <td>{{resume.contactEmail}}</td>
                 <td>{{resume.dateSubmitted}}</td>
                 <td>{{resume.notes}}</td>
+                <td>{{resume.followUp}}</td>
         
              </tr>
         </tbody>
