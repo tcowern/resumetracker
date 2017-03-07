@@ -22,32 +22,16 @@ function resController($timeout) {
 
     main.addResume = function() {
 
-        console.log(main.newResume.title);
-        console.log(main.newResume.location);
-        console.log(main.newResume.company);
-        console.log(main.newResume.url);
-        console.log(main.newResume.contactName);
-        console.log(main.newResume.contactPhone);
-        console.log(main.newResume.contactEmail);
-        console.log(main.newResume.dateSubmitted);
-        console.log(main.newResume.notes);
+        // Adding 7 days to submitted date
+        var subDate = Date.parse(main.newResume.dateSubmitted);
 
-        var subDate = new Date(main.newResume.dateSubmitted);
+        var newDate = new Date(subDate + 604800000); 
 
-        console.log("Date: " + subDate);
-
-        var resDay = subDate.getDate();
-        var resMonth = subDate.getMonth();
-        var resYear = subDate.getFullYear();
-
-        console.log("Month: " + (resMonth + 1) + ", Day: " + (resDay) + ", Year: " + resYear);
-
-        var newDate = ((resMonth + 1) + "/" + (resDay + 7) + "/" + resYear); 
-
-        console.log("New Date: " + newDate);
+        newDate = new Date(newDate);
 
         main.newResume.followUp = newDate;
 
+        //Saving everything into local storage
         if (main.newResume.title && main.newResume.location) {
 
             main.resumeList.push(main.newResume);

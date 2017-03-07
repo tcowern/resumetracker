@@ -128,7 +128,7 @@
                 <td>{{resume.contactEmail}}</td>
                 <td>{{resume.dateSubmitted}}</td>
                 <td>{{resume.notes}}</td>
-                <td>{{resume.followUp}}</td>
+                <td>{{resume.followUp | date: "fullDate"}}</td>
         
              </tr>
         </tbody>
