@@ -23,9 +23,8 @@
 
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">Resume Tracker</a></li>
-    <li><a data-toggle="tab" href="#menu1">Interview Information</a></li>
-    <li><a data-toggle="tab" href="#menu2">Career Web Sites</a></li>
-    <!--<li><a data-toggle="tab" href="#menu3">Menu 3</a></li>-->
+    <li><a data-toggle="tab" href="#tab1">Interview Information</a></li>
+    <li><a data-toggle="tab" href="#tab2">Career Web Sites</a></li>
   </ul>
 
   <div class="tab-content">
@@ -33,12 +32,12 @@
       <h3>Resume Tracker</h3>
         <div class="headButton">
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-lg button" data-toggle="modal" data-target="#myModal">
+        <!-- Button for triggering resume modal -->
+        <button type="button" class="btn btn-primary btn-lg button" data-toggle="modal" data-target="#myResModal">
           Add to your "Resume List"
         </button>
-        <!-- Modal -->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <!-- Resume Modal -->
+          <div class="modal fade" id="myResModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
                   <div class="modal-content">
                       <form ng-submit="main.addResume()">
@@ -56,7 +55,7 @@
                               Contact Email: <input class="form-control" ng-model="main.newResume.contactEmail" placeholder="Contact Email">
                               Date Submitted: <input class="form-control" ng-model="main.newResume.dateSubmitted" placeholder="Date Submitted">
                               Notes: <input class="form-control" ng-model="main.newResume.notes" placeholder="Notes">
-                              <!--Follow Up: <input type="hidden" class="form-control" ng-model="main.newResume.followUp" placeholder="Follow up Date">-->
+
                               <div class="modal-footer">    
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Save changes</button>
@@ -70,6 +69,7 @@
       <br>
       <br>
 
+        <!--table for displaying Resume Information-->
 
         <table class="table table-bordered table-striped">
 
@@ -156,36 +156,35 @@
     </table>
     </div>
     </div>
-    <div id="menu1" class="tab-pane fade">
-      <!--<h3>Interview Information</h3>
-      <p>Enter you interview information below.</p>-->
+    <div id="tab1" class="tab-pane fade">
+
             <h3>Interview Information</h3>
         <div class="headButton">
 
-        <!-- Button trigger modal -->
+        <!-- Button triggering interview modal -->
         <button type="button" class="btn btn-primary btn-lg button" data-toggle="modal" data-target="#myIntModal">
           Add to your "Interview Information"
         </button>
-        <!-- Modal -->
+        <!-- Interview Modal -->
           <div class="modal fade" id="myIntModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
                   <div class="modal-content">
                       <form ng-submit="main.addInterview()">
                           <div class="modal-header">
                               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="false">&times;</span></button>
-                              <h4 class="modal-title" id="myModalLabel">Enter Resume Informtion</h4>
+                              <h4 class="modal-title" id="myModalLabel">Enter Interview Informtion</h4>
                           </div>
                           <div class="modal-body">
                               Interview Date: <input class="form-control" ng-model="main.newInterview.intDate" placeholder="Interview Date">
                               Interviewer Name: <input class="form-control" ng-model="main.newInterview.intName" placeholder="Interview Name">
                               Interviewer Title: <input class="form-control" ng-model="main.newInterview.intTitle" placeholder="Interview Title">
                               Company: <input class="form-control" ng-model="main.newInterview.company" placeholder="Company">
-                              <!--Contact Name: <input class="form-control" ng-model="main.newResume.contactName" placeholder="Contact Name">-->
+                              
                               Interview Address: <input class="form-control" ng-model="main.newInterview.intAddress" placeholder="Interview Address">
                               Mailing Address: <input class="form-control" ng-model="main.newInterview.mailAddress" placeholder="Mailing Address">
                               Thank You Date: <input class="form-control" ng-model="main.newInterview.thanksDate" placeholder="Date to send Thank You">
                               Notes: <input class="form-control" ng-model="main.newInterview.notes" placeholder="Notes">
-                              <!--Follow Up: <input type="hidden" class="form-control" ng-model="main.newResume.followUp" placeholder="Follow up Date">-->
+
                               <div class="modal-footer">    
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Save changes</button>
@@ -199,51 +198,51 @@
       <br>
       <br>
 
-
+        <!-- Table for displaying Interview Information-->
         <table class="table table-bordered table-striped">
 
         <thead>
             <tr>
                 <td>
-                    <a href="#" ng-click="sortType = 'title'">
+                    <a href="#" ng-click="sortType = 'interviewDate'">
                     Interview Date
-                    <span ng-show="sortType == 'title'" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'interviewDate'" class="fa fa-caret-down"></span>
                     </a>
                 </td>
                 <td>
-                     <a href="#" ng-click="sortType = 'location'">
+                     <a href="#" ng-click="sortType = 'interviewerName'">
                     Interviewer Name
-                    <span ng-show="sortType == 'location'" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'interviewerName'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'interviewerTitle'">
+                    Interviewer TItle
+                    <span ng-show="sortType == 'interviewerTitle'" class="fa fa-caret-down"></span>
                     </a>
                 </td>
                 <td>
                     <a href="#" ng-click="sortType = 'company'">
-                    Interviewer TItle
+                    Company
                     <span ng-show="sortType == 'company'" class="fa fa-caret-down"></span>
                     </a>
                 </td>
                 <td>
-                    <a href="#" ng-click="sortType = 'url'">
-                    Company
-                    <span ng-show="sortType == 'url'" class="fa fa-caret-down"></span>
-                    </a>
-                </td>
-                <td>
-                    <a href="#" ng-click="sortType = 'contactName'">
+                    <a href="#" ng-click="sortType = 'interviewerAddress'">
                     Interview Address
-                    <span ng-show="sortType == 'contactName'" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'interviewerAddress'" class="fa fa-caret-down"></span>
                     </a>
                 </td>
                 <td>
-                    <a href="#" ng-click="sortType = 'contactPhone'">
+                    <a href="#" ng-click="sortType = 'mailingAddress'">
                     Mailing Address
-                    <span ng-show="sortType == 'contactPhone'" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'mailingAddress'" class="fa fa-caret-down"></span>
                     </a>
                 </td>
                 <td>
-                    <a href="#" ng-click="sortType = 'contactEmail'">
+                    <a href="#" ng-click="sortType = 'thankYouDate'">
                     Thank You Date
-                    <span ng-show="sortType == 'contactEmail'" class="fa fa-caret-down"></span>
+                    <span ng-show="sortType == 'thankYouDate'" class="fa fa-caret-down"></span>
                     </a>
                 </td>
 
@@ -275,15 +274,15 @@
     </div>
     </div>
 
-    <div id="menu2" class="tab-pane fade">
+    <div id="tab2" class="tab-pane fade">
         <h3>Career Web Sites</h3>
         <div class="headButton">
 
-        <!-- Button trigger modal -->
+        <!-- Button for triggering career web site modal -->
         <button type="button" class="btn btn-primary btn-lg button" data-toggle="modal" data-target="#myCareerModal">
           Use the following to track the Career Web Sites you use.
         </button>
-        <!-- Modal -->
+        <!-- Career Modal -->
           <div class="modal fade" id="myCareerModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -297,12 +296,12 @@
                               URL: <input class="form-control" ng-model="main.newWebSite.url" placeholder="URL">
                               Last Searched: <input class="form-control" ng-model="main.newWebSite.lastsearched" placeholder="Last Searched">
                               Number of Jobs Applied: <input class="form-control" ng-model="main.newWebSite.jobsapplied" placeholder="Number of jobs applied">
-                              <!--Contact Name: <input class="form-control" ng-model="main.newResume.contactName" placeholder="Contact Name">-->
+                              
                               Contacts: <input class="form-control" ng-model="main.newWebSite.contacts" placeholder="Contacts">
                               Interviews: <input class="form-control" ng-model="main.newWebSite.interviews" placeholder="Interviews">
                               Username: <input class="form-control" ng-model="main.newWebSite.username" placeholder="Username">
                               Password: <input class="form-control" ng-model="main.newWebSite.password" placeholder="Password (Optional)">
-                              <!--Follow Up: <input type="hidden" class="form-control" ng-model="main.newResume.followUp" placeholder="Follow up Date">-->
+                              
                               <div class="modal-footer">    
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                 <button type="submit" class="btn btn-primary">Save changes</button>
@@ -316,7 +315,7 @@
       <br>
       <br>
 
-
+        <!--Table for displaying Web Site Information-->
         <table class="table table-bordered table-striped">
 
         <thead>
