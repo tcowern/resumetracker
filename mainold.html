@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html  ng-app="myApp">
+<head>
+  <title>Resume Tracker</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-aria.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-xeditable/0.4.0/js/xeditable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.css">
+    <link rel="stylesheet" href="maincss.css">
+</head>
+<body ng-controller="resCtr as main">
+
+
+
+  <h1>Resume Tracker</h1>
+    <div class="headButton">
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg button" data-toggle="modal" data-target="#myModal">
+          Add to your "Resume List"
+        </button>
+        <!-- Modal -->
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                      <form ng-submit="main.addResume()">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="false">&times;</span></button>
+                              <h4 class="modal-title" id="myModalLabel">Enter Resume Informtion</h4>
+                          </div>
+                          <div class="modal-body">
+                              Job Title: <input class="form-control" ng-model="main.newResume.title" placeholder="Job Title">
+                              Location: <input class="form-control" ng-model="main.newResume.location" placeholder="Location">
+                              Company: <input class="form-control" ng-model="main.newResume.company" placeholder="Company">
+                              Company URL: <input class="form-control" ng-model="main.newResume.url" placeholder="Company URL">
+                              Contact Name: <input class="form-control" ng-model="main.newResume.contactName" placeholder="Contact Name">
+                              Contact Phone: <input class="form-control" ng-model="main.newResume.contactPhone" placeholder="Contact Phone">
+                              Contact Email: <input class="form-control" ng-model="main.newResume.contactEmail" placeholder="Contact Email">
+                              Date Submitted: <input class="form-control" ng-model="main.newResume.dateSubmitted" placeholder="Date Submitted">
+                              Notes: <input class="form-control" ng-model="main.newResume.notes" placeholder="Notes">
+                              <!--Follow Up: <input type="hidden" class="form-control" ng-model="main.newResume.followUp" placeholder="Follow up Date">-->
+                              <div class="modal-footer">    
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      <br>
+      <br>
+      <br>
+
+
+        <table class="table table-bordered table-striped">
+
+        <thead>
+            <tr>
+                <td>
+                    <a href="#" ng-click="sortType = 'title'">
+                    Title
+                    <span ng-show="sortType == 'title'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                     <a href="#" ng-click="sortType = 'location'">
+                    Location
+                    <span ng-show="sortType == 'location'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'company'">
+                    Company
+                    <span ng-show="sortType == 'company'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'url'">
+                    Company url
+                    <span ng-show="sortType == 'url'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'contactName'">
+                    Contact Name
+                    <span ng-show="sortType == 'contactName'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'contactPhone'">
+                    Contact Phone
+                    <span ng-show="sortType == 'contactPhone'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'contactEmail'">
+                    Contact Email
+                    <span ng-show="sortType == 'contactEmail'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'dateSubmitted'">
+                    Date Submitted
+                    <span ng-show="sortType == 'dateSubmitted'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'notes'">
+                    Notes
+                    <span ng-show="sortType == 'notes'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="#" ng-click="sortType = 'followUp'">
+                    Follow Up
+                    <span ng-show="sortType == 'followUp'" class="fa fa-caret-down"></span>
+                    </a>
+                </td>
+            </tr>
+        </thead>
+   
+        <tbody>
+            <tr ng-repeat="resume in main.resumeList | orderBy:sortType:sortReverse">
+                <td>{{resume.title}}</td>
+                <td>{{resume.location}}</td>
+                <td>{{resume.company}}</td>
+                <td>{{resume.url}}</td>
+                <td>{{resume.contactName}}</td>
+                <td>{{resume.contactPhone}}</td>
+                <td>{{resume.contactEmail}}</td>
+                <td>{{resume.dateSubmitted}}</td>
+                <td>{{resume.notes}}</td>
+                <td>{{resume.followUp | date: "fullDate"}}</td>
+        
+             </tr>
+        </tbody>
+</table>
+
+
+</body>
+</html>

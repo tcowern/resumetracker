@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html  ng-app="myApp">
+<head>
+  <title>Resume Tracker</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.8/angular-messages.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular-animate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-aria.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-xeditable/0.4.0/js/xeditable.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.1.3/angular-material.css">
+    <link rel="stylesheet" href="maincss.css">
+</head>
+<body ng-controller="resCtr as main">
+
+<md-nav-bar md-selected-nav-item="currentNavItem">
+  <md-nav-item md-nav-click="goto('main.html')" name="page1">
+    Page One
+  </md-nav-item>
+  <md-nav-item md-nav-href="#page2" name="page3">Page Two</md-nav-item>
+  <md-nav-item md-nav-href="page3" name="page2">Page Three</md-nav-item>
+  <md-nav-item md-nav-href="app.page4" sref-opts="{reload: true, notify: true}" name="page4">
+    Page Four
+  </md-nav-item>
+</md-nav-bar>
+
+
+
+
+</body>
+</html>
